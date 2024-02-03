@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container border rounded p-3">
+    <div class="row border border-black p-2">
+        <div class="col-lg-6">
+            <img class="product_img img-fluid rounded" src="{{ product.image.url }}" alt="{{ product.name }}">
+        </div>
+        <div class="col-lg-6 bg-white rounded p-2">
+            <div class="content">
+                <h2>{{ product.name }} <br>
+                    <span>{{ product.category }}</span>
+                </h2>
+                <p>{{ product.description|linebreaks }}</p>
+                
+                <h3>Rs. {{ product.price }}</h3>
+
+                {% if product.stock <= 0 %}
+                    <p class="text-justify my_prod_text my_custom_a"><b>Out of stock</b></p>
+                {% else %}
+                    <p class="my_custom_a">
+                        <a class="btn btn-primary" href="{# Add your cart URL #}">
+                            <b>Add to cart</b>
+                        </a>
+                    </p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
